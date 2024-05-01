@@ -4,10 +4,10 @@ import Heading from "./components/Heading"
 import List from "./components/List"
 import Section from "./components/Section"
 
-interface User {
-  id: number
-  username?: string
-}
+// interface User {
+//   id: number
+//   username?: string
+// }
 
 // Taxing function //
 type FibFunc = (n: number) => number
@@ -19,7 +19,7 @@ const myNum: number = 37
 
 function App() {
   const [count, setCount] = useState<number>(0)
-  const [users, setUsers] = useState<User[] | null>(null)
+  // const [users, setUsers] = useState<User[] | null>(null)
   // const [user, setUser] = useState<User>({} as User) // not recommended!
   // setUsers([{ id: 1 }, { id: 2 }, { id: 3 }])
 
@@ -30,9 +30,8 @@ function App() {
 
   useEffect(() => {
     console.log("mounting")
-    console.log("Users: ", users)
     return () => console.log("unmounting")
-  }, [users])
+  }, [])
 
   const addOne = useCallback(
     (): // e: MouseEvent<HTMLButtonElement> | KeyboardEvent<HTMLButtonElement>
