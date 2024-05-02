@@ -3,6 +3,8 @@ import Counter from "./components/Counter"
 import Heading from "./components/Heading"
 import List from "./components/List"
 import Section from "./components/Section"
+import { CounterProvider } from "./context/CounterContext"
+import { initState } from "./context/CounterContext"
 
 // interface User {
 //   id: number
@@ -47,21 +49,25 @@ function App() {
 
   return (
     <>
-      <Heading title={"Hello"} />
-      <Section>This is my section.</Section>
-      <Counter />
-      <List
-        items={["☕ Coffee", "🎶 Music", "🖥 Code"]}
-        render={(item: string) => <span className="gold">{item}</span>}
-      />
-      <h1>{count}</h1>
-      <button type="button" onClick={addOne}>Add 1</button>
-      <button type="button" onClick={addTwo}>Add 2</button>
-      <h2>{myResult}</h2>
-      <form>
-        <label htmlFor="inputRef">Input</label>
-        <input placeholder="Input" type="text" id="inputRef" ref={inputRef} />
-      </form>
+      <CounterProvider count={initState.count} text={initState.text}>
+        <>
+          <Heading title={"Hello"} />
+          <Section>This is my section.</Section>
+          <Counter />
+          <List
+            items={["☕ Coffee", "🎶 Music", "🖥 Code"]}
+            render={(item: string) => <span className="gold">{item}</span>}
+            />
+          <h1>{count}</h1>
+          <button type="button" onClick={addOne}>Add 1</button>
+          <button type="button" onClick={addTwo}>Add 2</button>
+          <h2>{myResult}</h2>
+          <form>
+            <label htmlFor="inputRef">Input</label>
+            <input placeholder="Input" type="text" id="inputRef" ref={inputRef} />
+          </form>
+        </>
+      </CounterProvider>
     </>
   )
 }
